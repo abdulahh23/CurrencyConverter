@@ -1,3 +1,11 @@
+$(document).ready(function() {
+  $('#from_dropDown').select2();
+});
+
+$(document).ready(function() {
+  $('#to_dropDown').select2();
+});
+
 let url = "https://v6.exchangerate-api.com/v6/24196fef9f8fbb56509ff884/latest/USD";
 let rates;
 let btn = document.querySelector("#button");
@@ -9,6 +17,7 @@ let fromCurr;
 let toCurr;
 let fromCurrRate;
 let toCurrRate;
+let reverse = document.querySelector("#exchangeIcon");
 
 
 let change = () => {
@@ -40,10 +49,21 @@ let convertCurr = () => {
 }
 
 btn.addEventListener("click", () => {
+    showRate();
+})
+
+function showRate() {
     user_num = document.querySelector("#user_value").value;
     fromCurr = from_dropDown.value;
     toCurr = to_dropDown.value;
     getCurrRate();
     let new_value = convertCurr().toFixed(2);
     displayText.innerText = `${user_num} ${fromCurr} = ${new_value} ${toCurr}`;
+}
+
+reverse.addEventListener("click", () => {    
+    let temp = from_dropDown.value;
+    $('#from_dropDown').val(to_dropDown.value).trigger('change');
+    $('#to_dropDown').val(temp).trigger('change');
+    showRate();
 })
