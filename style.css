@@ -38,6 +38,7 @@ input {
     height: 38px;
     border-radius: 10px;
     border: 1px solid #af4d98;
+    padding-left: 0.5rem;
 }
 
 input:focus {
@@ -79,6 +80,15 @@ button:hover {
     font-size: 20px;
     display: flex;
     align-items: center;
+}
+
+#exchangeIcon:hover {
+cursor: pointer;
+}
+
+.dropDown {
+    width: 62px;
+    height: 20px;
 }
 
 @media (orientation: portrait) {
